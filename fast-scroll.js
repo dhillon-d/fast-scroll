@@ -5,7 +5,13 @@ window.addEventListener("focus", resetAlt);
 let allElements = document.querySelectorAll("*");
 allElements.forEach((element) => {
   if (element.scrollHeight > element.clientHeight) {
-    element.addEventListener("wheel", fastScroll);
+    element.addEventListener("wheel", (event) => {
+      let increatedDeltaY = event.deltaY * 3;
+      event.preventDefault();
+      if (map["AltLeft"]) {
+        element.scrollTop += increatedDeltaY;
+      }
+    });
   }
 });
 
