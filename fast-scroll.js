@@ -1,7 +1,13 @@
 document.addEventListener("keydown", onKeyDown);
 document.addEventListener("keyup", onKeyUp);
-document.addEventListener("wheel", fastScroll);
 window.addEventListener("focus", resetAlt);
+// document.addEventListener("wheel", fastScroll);
+let allElements = document.querySelectorAll("*");
+allElements.forEach((element) => {
+  if (element.scrollHeight > element.clientHeight) {
+    element.addEventListener("wheel", fastScroll);
+  }
+});
 
 let map = {};
 
@@ -19,10 +25,11 @@ function onKeyUp(e) {
 
 function fastScroll(e) {
   if (map["AltLeft"]) {
-    window.scrollBy(0, e.deltaY * 3);
+    e.scrollBy(0, e.deltaY * 3);
   }
 }
 
+// When user switches back to window, refresh alt key
 function resetAlt(e) {
   if (map["AltLeft"]) {
     map["AltLeft"] = false;
