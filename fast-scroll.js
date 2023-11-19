@@ -1,16 +1,11 @@
 document.addEventListener("keydown", onKeyDown);
 document.addEventListener("keyup", onKeyUp);
 window.addEventListener("focus", resetAlt);
-// document.addEventListener("wheel", fastScroll);
 let allElements = document.querySelectorAll("*");
 allElements.forEach((element) => {
   if (element.scrollHeight > element.clientHeight) {
     element.addEventListener("wheel", (event) => {
-      let increatedDeltaY = event.deltaY * 3;
-      event.preventDefault();
-      if (map["AltLeft"]) {
-        element.scrollTop += increatedDeltaY;
-      }
+      fastScroll(element, event);
     });
   }
 });
@@ -29,9 +24,10 @@ function onKeyUp(e) {
   }
 }
 
-function fastScroll(e) {
+function fastScroll(element, event) {
+  let increatedDeltaY = event.deltaY * 3;
   if (map["AltLeft"]) {
-    e.scrollBy(0, e.deltaY * 3);
+    element.scrollTop += increatedDeltaY;
   }
 }
 
