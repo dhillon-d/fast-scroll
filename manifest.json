@@ -1,17 +1,14 @@
 {
+  "manifest_version": 2,
+  "name": "Fast scroll",
+  "version": "1.2",
 
-    "manifest_version": 2,
-    "name": "Fast scroll",
-    "version": "1.2",
-  
-    "description": "Hold left alt key to increase scroll speed, useful for viewing text heavy sites.",
-  
-    "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "js": ["fast-scroll.js"]
-      }
-    ]
-  
-  }
-  
+  "description": "Hold left alt key to increase scroll speed of element, useful for viewing text heavy sites.",
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["fast-scroll.js"]
+    }
+  ]
+}
