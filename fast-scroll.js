@@ -25,7 +25,7 @@ function onKeyUp(e) {
 }
 
 function fastScroll(element, event) {
-  event.stopPropagation();
+  // event.stopPropagation();
   let increatedDeltaY = event.deltaY * 3;
   if (map["AltLeft"]) {
     element.scrollTop += increatedDeltaY;
